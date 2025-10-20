@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Human2Nav: Learning Navigation from Human Videos across Robots via Test-Time Feasibility-Guided Flow Matching">
+  <meta name="keywords" content="Navigation, Imitation Learning, Learn from Human Video, Transfer Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Human2Nav: Learning Navigation from Human Videos across Robots via Test-Time Feasibility-Guided Flow Matching
+  </title>
+
+
+  <link rel="icon" href="./static/images/CR7_frame5_ico_png_crop.png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QZ38WT2YPD');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <meta property="og:image" content="https://agile.human2humanoid.com/static/images/asap-preview-gif-480P.gif" />
+  <meta property="og:image:secure" content="https://agile.human2humanoid.com/static/images/asap-preview-gif-480P.gif" />
+</head>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src="./static/videos/Hero-ASAP-Video-Website-Hero-16-9-202502031028-1080P.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-video is-hidden-tablet is-inline-block-mobile"
+    style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh;min-height:100%;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/ASAP-Video-Website-Hero-9-16-4K-1080P.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item pl-4 pr-4" href="./static/asap.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+            <span class="navbar-item  pl-4 pr-4">
+              <a href="https://github.com/LeCAR-Lab/ASAP" class="button is-inverted is-large">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Title -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 6rem;">
+        Human2Nav 
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+        ICRA 2026
+      </h1>
+      <div class="column has-text-centered is-hidden-tablet">
+        <div class="publication-links">
+          <!-- PDF Link. -->
+          <span class="link-block">
+            <a href="./static/asap.pdf" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <!-- Code Link. -->
+          <span class="link-block">
+            <a href="https://github.com/LeCAR-Lab/ASAP"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!------------------- Main Title  ----------------->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Human2Nav: Learning Navigation from Human Videos across Robots via Test-Time Feasibility-Guided Flow Matching</h1>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block" style="font-size: 95%;">
+
+              <a href="https://wenlixiao-cs.github.io">Shenghong Zhang</a>&nbsp;&nbsp;
+              <a href="https://hang0610.github.io">Junjie Chen</a>&nbsp;&nbsp;
+              <a href="https://www.linkedin.com/in/zi-wang-b675aa236">Sichi Yan</a>&nbsp;&nbsp;
+              <a href="https://jiashunwang.github.io">Yutong Ban</a>&nbsp;&nbsp;
+              <a href="https://jiashunwang.github.io">Xiao Li</a>&nbsp;&nbsp;
+            </span>
+          </div>
+
+          <div class="column">
+            <image src="./static/images/SJTU_log.png" style="width: 30%;"></image>
+         </div>
+
+
+          <div class="is-size-4 publication-authors", style="margin-bottom: 0.5cm;">
+            ICRA 2026
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/asap.pdf"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>PDF</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/LeCAR-Lab/ASAP" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!------------------- Demo ----------------->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2" style="text-align: center; padding-bottom: 10px;">Simulation</h2>
+        <tr>
+          <td>
+
+            <div class="columns"> <!-- Correct Bulma structure -->
+              <div class="column">
+                <h3 class="title is-3" style="text-align: center; margin-bottom: 10px; font-size: x-large;">Cristiano Ronaldo</h3>
+                <video autoplay muted loop playsinline controls src="./static/videos/ASAP-Motion-CR7_level1-1080P.mp4" width="100%" style="border-radius:10px;"></video>
+              </div>
+              <div class="column">
+                <h3 class="title is-3" style="text-align: center; margin-bottom: 10px; font-size: x-large;">Kobe Bryant</h3>
+                <video autoplay muted loop playsinline controls src="./static/videos/ASAP-Motion-Kobe-1080P.mp4" width="100%" style="border-radius:10px;"></video>
+              </div>
+            </div>
+            <br>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2" style="text-align: center; padding-bottom: 10px;">Realworld</h2>
+        <tr>
+          <td>
+
+            <div class="columns"> <!-- Correct Bulma structure -->
+              <div class="column">
+                <h3 class="title is-3" style="text-align: center; margin-bottom: 10px; font-size: x-large;">Kick (Before ASAP)</h3>
+                <video autoplay muted loop playsinline controls src="./static/videos/ASAP-Website-Kick-BeforeASAP-1080P.mp4" width="100%" style="border-radius:10px;"></video>
+              </div>
+              <div class="column">
+                <h3 class="title is-3" style="text-align: center; margin-bottom: 10px; font-size: x-large;">Kick (After ASAP)</h3>
+                <video autoplay muted loop playsinline controls src="./static/videos/ASAP-Website-Kick-AfterASAP-1080P.mp4" width="100%" style="border-radius:10px;"></video>
+              </div>
+            </div>
+            <br>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+
+<!------------------- Demo ----------------->
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Enabling robots to navigate safely and efficiently
+            in <span class="method" style="color: rgb(243, 7, 7);">dynamic, crowded environments</span> requires learning from
+            large-scale demonstrations, which are costly and unsafe to
+            collect on physical platforms. While human videos offer a rich
+            and scalable alternative, transferring these motion patterns to
+            robots is challenged by the embodiment gap across observation
+            and action spaces. This paper presents <span class="method" style="color: rgb(92, 205, 5);">Human2Nav, a data efficient framework that learns navigation policies directly from
+            human videos </span> via test-time feasibility-guided flow matching.
+            Human2Nav employs a bird's-eye-view representation to align
+            visual observations and trains a conditional flow matching
+            model to capture nuanced human navigation patterns. Crucially, we introduce a training-free feasibility guidance mechanism that during inference steers generated trajectories to
+            satisfy heterogeneous robot-specific kinematic and dynamic
+            constraints without retraining. Extensive experiments in simulation and on real-world heterogeneous robotic platforms
+            demonstrate that Human2Nav achieves superior data efficiency
+            and navigation performance compared to model-based and
+            learning-based baselines, while ensuring safe and executable
+            trajectories across diverse crowd scenarios.
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Method</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-thirds">
+        <div class="content has-text-justified">
+          <ol type="a">
+            There are three steps within the Human2Nav framework:
+              <ol>
+                <li><strong>Motion Tracking Pre-training and Real Trajectory Collection</strong>:  
+                    <br>With the humanoid motions retargeted from human videos
+                </li>
+                <li><strong>Policy Fine-tuning</strong>
+                    <br> We freeze the delta action model, incorporate ;
+                </li>
+                <li><strong>Real-World Deployment</strong>
+                    <br> Finally, we deploy the fine-tuned policy directly in the real world without the delta action model.
+                </li>
+              </ol>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columns is-centered">
+      <div class="column is-four-fifth">
+        <img src="./static/images/pipeline.png" alt="" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container content">
+    <h2 class="titile">BibTeX</h2>
+    <pre><code>@article{he2025asap,
+      title={Human2Nav: Learning Navigation from Human Videos across Robots via Test-Time Feasibility-Guided Flow Matching},
+      author={He, Tairan and Gao, Jiawei and Xiao, Wenli and Zhang, Yuanhang and Wang, Zi and Wang, Jiashun and Luo, Zhengyi and He, Guanqi and Sobanbabu, Nikhil and Pan, Chaoyi and Yi, Zeji and Qu, Guannan and Kitani, Kris and Hodgins, Jessica and Fan, Linxi "Jim" and Zhu, Yuke and Liu, Changliu and Shi, Guanya},
+      journal={arXiv preprint arXiv:2502.01143},
+      year={2025}
+    }</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Page template borrowed from <a href="https://agile.human2humanoid.com/"><span class="dnerf">ASAP</span></a>.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
